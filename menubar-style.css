@@ -1,0 +1,41 @@
+.menubar-href {
+	text-decoration:none;
+	color:black;
+	padding:7px;
+	margin-top:10px;
+	font-family:Source Sans Pro;
+	font-weight:normal;
+	font-size:24px;
+	background-color:#fca741;
+	border-radius:2px;
+	transition: 0.85s;
+}
+
+.menubar-list {
+	list-style-type:none;
+}
+
+.menubar-element {
+	display:inline;
+	background-color:#fca741;
+}
+
+.menubar-list-container {
+	text-align:center;
+	margin-left:-2%;
+}
+
+.menubar-href:hover {
+	background-color:#ff910c;
+	transition: 0.85s;
+	border-radius:5px;
+	padding:10px 20px 10px 20px
+}
+
+.menubar-image {
+	display:inline;
+}
+
+.menubar-image-container {
+	text-align:center;
+}
