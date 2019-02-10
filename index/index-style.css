@@ -3,11 +3,6 @@ body {
 	font-family:'Open Sans', sans-serif;
 }
 
-.menubar-container {
-	padding: 20px 0 5px 0;
-	background-color:#ededed;
-}
-
 .grid-container {
 	display:grid;
 	grid-template-columns: 48% 48%;

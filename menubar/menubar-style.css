@@ -3,7 +3,6 @@
 	color:black;
 	padding:7px;
 	margin-top:10px;
-	font-weight:normal;
 	font-size:24px;
 	background-color:#fca741;
 	border-radius:2px;
@@ -42,4 +41,21 @@
 .menubar-text {
 	font-size:58px;
 	font-family:Cinzel;
+	font-weight:normal;
+	text-decoration:none;
+	color:black;
+	/* solves some margin override error */
+	margin:0;
+}
+
+.menubar-container {
+	padding: 20px 0 5px 0;
+	background-color:#ededed;
+	font-family:'Open Sans', sans-serif;
+}
+
+
+body {
+	/* solves some margin override error */
+	margin:0;
 }

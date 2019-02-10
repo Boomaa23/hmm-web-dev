@@ -2,27 +2,25 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="index-style.css">
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Cinzel" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 
 <body>
 <div class="body-container">
-	<div class="menubar-container">
-		<?php include('menubar.html'); ?>
-	</div>
+	<?php include('../menubar/menubar.php'); ?>
 	
 	<div class="main-image">
 	<div class="gallery">
-		<img src="web_images/gallery/A.jpg" class="gallery-img">
+		<img src="../gallery/A.jpg" class="gallery-img">
 		<div class="gallery-overlay">A Journey into the Ancient World</div>
 	</div>
 	<div class="gallery gallery-img">
-		<img src="web_images/gallery/B.jpg" class="gallery-img">
+		<img src="../gallery/B.jpg" class="gallery-img">
 		<div class="gallery-overlay">TestingB</div>
 	</div>
 	<div class="gallery gallery-img">
-		<img src="web_images/gallery/C.jpg"  class="gallery-img">
+		<img src="../gallery/C.jpg"  class="gallery-img">
 		<div class="gallery-overlay">TestingC</div>
 	</div>
 		<script>
@@ -44,6 +42,14 @@
 	</div>
 	
 	<div class="grid-container">
+		<div class="body-panel">
+			<h1>Hello there</h1>
+			<p>testing testing</p>
+		</div>
+		<div class="body-panel">
+			<h1>Hello there</h1>
+			<p>testing testing</p>
+		</div>
 		<div class="body-panel">
 			<h1>Hello there</h1>
 			<p>testing testing</p>
