@@ -1,6 +1,7 @@
 body {
 	background-color:#dbdbdb;
 	font-family:'Open Sans', sans-serif;
+	padding-bottom:10px;
 }
 
 .grid-container {

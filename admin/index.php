@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
-<?php
-	include('../menubar/menubar.php');
-?>
+<head>
+	<link rel="stylesheet" type="text/css" href="../style-fixes.css">
+</head>
+<body>
+	<?php include('../include/menubar.php');?>
+</body>
 </html>
