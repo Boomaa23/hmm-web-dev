@@ -16,7 +16,7 @@
 	<div class="menubar-list-container">
 		<ul class="menubar-list">
 			<li class="menubar-element"><a class="menubar-href" href="../map/">The Map</a></li>
-			<li class="menubar-element"><a class="menubar-href" href="../staff/">Students & Staff</a></li>
+			<li class="menubar-element"><a class="menubar-href" href="../staff/">Case Studies</a></li>
 			<li class="menubar-element"><a class="menubar-href" href="../about/">About Us</a></li>
 			<li class="menubar-element"><a class="menubar-href" href="../input/">Your Story</a></li>
 		</ul>

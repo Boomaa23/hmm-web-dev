@@ -1,42 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
 </head>
 <body>
 	<!-- project viewer/form -->
 	<?php
-		$files = glob("../staff/staff_data/json/*.json", GLOB_BRACE);
-		foreach($files as $file) {
+			$file = $_GET["src"];
+			$fileArray = json_decode(file_get_contents('../staff/staff-data/json/' . $file . '.json'));
 			echo '<form action="../staff/staff-action.php?dest=action" method="post" enctype="multipart/form-data">';
-			$fileArray = json_decode(file_get_contents($file));
-			$file = trim(basename($file, ".json"));
-			echo '<input type="text" name="proj_name" value="' . $fileArray[0] . '" required><br />' . 
-			'<input type="text" name="stud_name" value="' . $fileArray[1] . '" required><br />' .
-			'<input type="file" name="img"></input><br />';
+			
+			echo '<a>Project Name: </a><input type="text" name="proj_name" value="' . $fileArray[0] . '" required><br />';
+				
+			echo '<a>Student Name: </a><input type="text" name="stud_name" value="' . $fileArray[1] . '" required><br /><br />' .
+			'<a>Image Upload Type: </a><br /><input type="radio" name="img_type" value="student" ><a>Student Picture</a><br />'.
+			'<input type="radio" name="img_type" value="project" ><a>Project Picture</a><br />'.
+			'<input type="radio" name="img_type" value="none" checked="checked"><a>None (no upload)</a><br /><br />'.
+			'<a>Image Upload: </a><br /><input type="file" name="img"></input><br />';
 			
 			$tmp_disp = "";
-			if(!file_exists('../staff/staff_data/img/' . $file . '.png')) {
-				$tmp_disp = 'display:none;';
-				echo 'No Image Found';
+			if(file_exists('../staff/staff-data/img/student/' . $file . '.png')) {
+				echo '<a href="../staff/staff-data/img/student/' . $file . '.png" style="max-width:500px;">Current Student Picture</a><br />';
+			} else {
+				echo 'No Student Picture Found <br />';
 			}
-			echo '<img src="../staff/staff_data/img/' . $file . '.png" style="max-width:500px;' . $tmp_disp . '"><br />';
 			
-			echo '<textarea name="proj_desc" cols="70" rows="15" required>' . $fileArray[2]. '</textarea><br />' .
-			'<input type="text" name="filename" value="' . $file . '" readonly><br />' .
+			$tmp_disp = "";
+			if(file_exists('../staff/staff-data/img/project/' . $file . '.png')) {
+				echo '<a href="../staff/staff-data/img/project/' . $file . '.png" style="max-width:500px;">Current Project Picture</a><br />';
+			} else {
+				echo 'No Project Picture Found <br />';
+			}
+			
+			
+			echo '<br /><a>Project Description:</a><br /><textarea name="proj_desc" cols="70" rows="15" required>' . $fileArray[2]. '</textarea><br />' .
+			'<a>Student Description:</a><br /><textarea name="stud_desc" cols="70" rows="15" required>' . $fileArray[3]. '</textarea><br />' .
+			'<a>Student ID: </a><input width="20px" type="text" name="filename" value="' . $file . '" readonly><br />' .
 			'<input type="submit"></form>' .
 			'<br /><br />';
-		}
+		
 	?>
 	
-	<!-- add a project -->
-	<form action="../staff/staff-action.php?dest=add" method="post">
-		<input type="submit" value="Add another Project">
-	</form>
-	
-	<!-- remove a project -->
-	<form action="../staff/staff-action.php?dest=remove" method="post">
-		<input type="text" name="project" required>
-		<input type="submit" value="Remove a Project">
-	</form>
 </body>
 </html>
