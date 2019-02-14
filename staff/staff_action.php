@@ -8,5 +8,5 @@
 		$data = array($_POST["proj_name"], $_POST["stud_name"], $_POST["proj_desc"]);
 		file_put_contents('staff_data/json/' . $_POST["filename"] . '.json', json_encode($data, FILE_APPEND));
 	}
-	header("refresh:0; url=../admin/modify_staff.php");
+	header("refresh:0; url=../admin/");
 ?>

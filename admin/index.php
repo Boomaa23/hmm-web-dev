@@ -4,6 +4,6 @@
 	<link rel="stylesheet" type="text/css" href="../style-fixes.css">
 </head>
 <body>
-	<a href="modify_staff.php">Staff Data Editor</a>
+	<?php include('modify_staff.php'); ?>
 </body>
 </html>
