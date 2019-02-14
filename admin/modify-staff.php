@@ -7,7 +7,7 @@
 	<?php
 		$files = glob("../staff/staff_data/json/*.json", GLOB_BRACE);
 		foreach($files as $file) {
-			echo '<form action="../staff/staff_action.php?dest=action" method="post" enctype="multipart/form-data">';
+			echo '<form action="../staff/staff-action.php?dest=action" method="post" enctype="multipart/form-data">';
 			$fileArray = json_decode(file_get_contents($file));
 			$file = trim(basename($file, ".json"));
 			echo '<input type="text" name="proj_name" value="' . $fileArray[0] . '" required><br />' . 
@@ -29,12 +29,12 @@
 	?>
 	
 	<!-- add a project -->
-	<form action="../staff/staff_action.php?dest=add" method="post">
+	<form action="../staff/staff-action.php?dest=add" method="post">
 		<input type="submit" value="Add another Project">
 	</form>
 	
 	<!-- remove a project -->
-	<form action="../staff/staff_action.php?dest=remove" method="post">
+	<form action="../staff/staff-action.php?dest=remove" method="post">
 		<input type="text" name="project" required>
 		<input type="submit" value="Remove a Project">
 	</form>
