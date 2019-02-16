@@ -7,8 +7,8 @@
 	<!-- project viewer/form -->
 	<?php
 			$file = $_GET["src"];
-			$fileArray = json_decode(file_get_contents('../staff/staff-data/json/' . $file . '.json'));
-			echo '<form action="../staff/staff-action.php?dest=action" method="post" enctype="multipart/form-data">';
+			$fileArray = json_decode(file_get_contents('../data/json/' . $file . '.json'));
+			echo '<form action="../about/staff-action.php?dest=action" method="post" enctype="multipart/form-data">';
 			
 			echo '<a>Project Name: </a><input type="text" name="proj_name" value="' . $fileArray[0] . '" required><br />';
 				
@@ -19,15 +19,15 @@
 			'<a>Image Upload: </a><br /><input type="file" name="img"></input><br />';
 			
 			$tmp_disp = "";
-			if(file_exists('../staff/staff-data/img/student/' . $file . '.png')) {
-				echo '<a href="../staff/staff-data/img/student/' . $file . '.png" style="max-width:500px;">Current Student Picture</a><br />';
+			if(file_exists('../data/img/student/' . $file . '.png')) {
+				echo '<a href="../data/img/student/' . $file . '.png" style="max-width:500px;">Current Student Picture</a><br />';
 			} else {
 				echo 'No Student Picture Found <br />';
 			}
 			
 			$tmp_disp = "";
-			if(file_exists('../staff/staff-data/img/project/' . $file . '.png')) {
-				echo '<a href="../staff/staff-data/img/project/' . $file . '.png" style="max-width:500px;">Current Project Picture</a><br />';
+			if(file_exists('../data/img/project/' . $file . '.png')) {
+				echo '<a href="../data/img/project/' . $file . '.png" style="max-width:500px;">Current Project Picture</a><br />';
 			} else {
 				echo 'No Project Picture Found <br />';
 			}
