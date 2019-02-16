@@ -19,6 +19,7 @@
 			<li class="menubar-element"><a class="menubar-href" href="../projects/">Case Studies</a></li>
 			<li class="menubar-element"><a class="menubar-href" href="../about/">About Us</a></li>
 			<li class="menubar-element"><a class="menubar-href" href="../input/">Your Story</a></li>
+			<li class="menubar-element"><a class="menubar-href" href="../contact/">Contact Us</a></li>
 		</ul>
 	</div>
 </div>

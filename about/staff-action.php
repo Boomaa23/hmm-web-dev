@@ -9,22 +9,17 @@ if($_GET["dest"] == "action") {
 
 function action() {
 	if(isset($_POST["filename"])) {
-		if(isset($_FILES["img"]) && isset($_POST["img_type"])) {
-			if($_POST["img_type"] == "student") {
-				$dir = "student/";
-			} else if($_POST["img_type"] == "project") {
-				$dir = "project/";
-			} else if($_POST["img_type"] == "none") {
-				$dir = "";
-			}
-			if($dir != "") {
-				imagepng(imagecreatefromstring(file_get_contents($_FILES["img"]["tmp_name"])), '../data/img/' . $dir . $_POST["filename"] . '.png');
-			}
+		if(isset($_FILES["stud_img"])) {
+			imagepng(imagecreatefromstring(file_get_contents($_FILES["stud_img"]["tmp_name"])), '../data/img/student/' . $_POST["filename"] . '.png');
+		}
+		
+		if(isset($_FILES["proj_img"])) {
+			imagepng(imagecreatefromstring(file_get_contents($_FILES["proj_img"]["tmp_name"])), '../data/img/project/' . $_POST["filename"] . '.png');
 		}
 
-		ftruncate(fopen('../data/json/' . $_POST["filename"] . '.json', "r+"), 0);
-		$data = array($_POST["proj_name"], $_POST["stud_name"], $_POST["proj_desc"], $_POST["stud_desc"]);
-		file_put_contents('../data/json/' . $_POST["filename"] . '.json', json_encode($data, FILE_APPEND));
+	ftruncate(fopen('../data/json/' . $_POST["filename"] . '.json', "r+"), 0);
+	$data = array($_POST["proj_name"], $_POST["stud_name"], $_POST["proj_desc"], $_POST["stud_desc"]);
+	file_put_contents('../data/json/' . $_POST["filename"] . '.json', json_encode($data, FILE_APPEND));
 	}
 }
 

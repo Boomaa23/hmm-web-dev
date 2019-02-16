@@ -8,62 +8,35 @@
 <body>
 	<?php include('../include/menubar.php');?>
 	<div class="submenubar-body">
-	<!--<h1>What <i>is</i> ImpactMania?</h1>-->
-	<div class="table-container"align="center">
-		<table cellspacing="25">
-		<?php
-		$files = glob("../data/json/*.json", GLOB_BRACE);
-		$ct = 0;
-		foreach($files as $file) {
-			
-			$fileArray = json_decode(file_get_contents($file));
-			if($ct % 2 == 0) {
-				// left side picture
-				echo '<tr>
-					<td class="table-studentname table-left table-element">
-						<a class="inner-studentname">' . $fileArray[1] . '</a>
-					</td>
-					<td colspan="2" class="table-projectname table-right table-element">
-						<a class="inner-projectname">' . $fileArray[0] . '</a>
-					</td>
-				</tr>
-				<tr>
-					<td class="table-studentpicture table-left table-element">
-						<img class="inner-studentpicture" src="../data/img/student/' . basename($file, ".json") . '.png">
-					</td>
-					<td colspan="2" class="table-projectbrief table-right table-element">
-						<span class="inner-projectbrief">' . $fileArray[2] . '</span>
-					</td>
-				</tr>';
-				
+		<span class="submenubar-header"><h1>About Us<hr width="300px" /></h1></span>
+		<div class="accordion-container">
+			<button class="accordion">ImpactMania</button>
+			<div class="panel">
+			  <?php include("im-history.php"); ?>
+			</div>
+
+			<button class="accordion">Staff</button>
+			<div class="panel">
+			  <?php include("staff.php"); ?>
+			</div>
+		</div>
+	</div>
+	<script>
+		var acc = document.getElementsByClassName("accordion");
+		var i;
+
+		for (i = 0; i < acc.length; i++) {
+		  acc[i].addEventListener("click", function() {
+			this.classList.toggle("active");
+			var panel = this.nextElementSibling;
+			if (panel.style.maxHeight){
+			  panel.style.maxHeight = null;
 			} else {
-				// right side picture
-				echo '<tr>
-					<td colspan="2" class="table-projectname table-left table-element">
-						<a class="inner-projectname">' . $fileArray[0] . '</a>
-					</td>
-					<td class="table-studentname table-right table-element">
-						<a class="inner-studentname">' . $fileArray[1] . '</a>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2" class="table-projectbrief table-left table-element">
-						<span class="inner-projectbrief">' . $fileArray[2] . '</span>
-					</td>
-					<td class="table-studentpicture table-right table-element">
-						<img class="inner-studentpicture" src="../data/img/student/' . basename($file, ".json") . '.png">
-					</td>
-				</tr>';
-			}
-			echo '<tr>
-					<td colspan="3"><hr /></td>
-				</tr>';
-			$ct++;
+			  panel.style.maxHeight = panel.scrollHeight + "px";
+			} 
+		  });
 		}
-		?>
-		</table>
-	</div>
-	</div>
+	</script>
 	<?php include('../include/footer.html'); ?>
 </body>
 </html>

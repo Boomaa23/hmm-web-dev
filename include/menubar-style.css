@@ -5,7 +5,7 @@
 	margin-top:10px;
 	font-size:24px;
 	background-color:#fca741;
-	border-radius:5px;
+	border-radius:2px;
 	transition: 0.85s;
 }
 
@@ -26,7 +26,6 @@
 .menubar-href:hover {
 	background-color:#ff910c;
 	transition: 0.85s;
-	border-radius:5px;
 	padding:10px 20px 10px 20px
 }
 

@@ -14,7 +14,6 @@
 			} else {
 				echo '<a href="modify-staff.php?src=' . $file . '">NEW PROJECT (' . $file . ')</a><br />';
 			}
-			
 		}
 	?>
 	<br />	
