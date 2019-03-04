@@ -1,4 +1,9 @@
 <?php
+
+require '../utils/markdown-extended/src/bootstrap.php';
+use \MarkdownExtended\MarkdownExtended;
+
+
 if($_GET["dest"] == "action") {
 	action();
 } else if($_GET["dest"] == "add") {
@@ -18,14 +23,14 @@ function action() {
 		}
 
 	ftruncate(fopen('../data/json/' . $_POST["filename"] . '.json', "r+"), 0);
-	$data = array($_POST["proj_name"], $_POST["stud_name"], $_POST["proj_desc"], $_POST["stud_desc"]);
+	$data = array($_POST["proj_name"], $_POST["stud_name"], MarkdownExtended::parse($_POST["proj_desc"])->getContent(), MarkdownExtended::parseString($_POST["stud_desc"])->getContent(), $_POST["proj_desc"], $_POST["stud_desc"]);
 	file_put_contents('../data/json/' . $_POST["filename"] . '.json', json_encode($data, FILE_APPEND));
 	}
 }
 
 function add() {
-	include('../phputils.php');
-	file_put_contents('../data/json/' . generateRandomString(8) . '.json', json_encode(array("","","","")));
+	include("../phputils.php");
+	file_put_contents('../data/json/' . generateRandomString(8) . '.json', json_encode(array("","","","","","")));
 }
 
 function remove() {
