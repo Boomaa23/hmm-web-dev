@@ -15,7 +15,12 @@
 			  <?php include("im-history.php"); ?>
 			</div>
 
-			<button class="accordion">Staff</button>
+			<button class="accordion">Interns</button>
+			<div class="panel">
+			  <?php include("staff.php"); ?>
+			</div>
+			
+			<button class="accordion">Interns</button>
 			<div class="panel">
 			  <?php include("staff.php"); ?>
 			</div>

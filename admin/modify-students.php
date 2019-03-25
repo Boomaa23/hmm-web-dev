@@ -10,20 +10,10 @@
 	$file = $_GET["src"];
 	$fileArray = json_decode(file_get_contents('../data/json/' . $file . '.json'));
 	echo '<title>HMM Admin Editor | ' . $file .'</title>';
-	echo '<form action="../about/staff-action.php?dest=action" method="post" enctype="multipart/form-data">
-	
-	<a>Project Name: </a><input type="text" name="proj_name" value="' . $fileArray[0] . '" required><br />
-	<a>Student Name: </a><input type="text" name="stud_name" value="' . $fileArray[1] . '" required><br /><br />
-	
-	<a>Project Image Upload: </a><br /><input type="file" name="proj_img"></input><br /><br />
-	<a>Student Image Upload: </a><br /><input type="file" name="stud_img"></input><br /><br />';
+	echo '<form action="../data/data-action.php?dest=studentAction" method="post" enctype="multipart/form-data">
 
-	$tmp_disp = "";
-	if(file_exists('../data/img/project/' . $file . '.png')) {
-		echo '<a href="../data/img/project/' . $file . '.png" style="max-width:500px;">Current Project Image</a><br />';
-	} else {
-		echo 'No Project Image Found <br />';
-	}
+	<a>Student Name: </a><input type="text" name="stud_name" value="' . $fileArray[1] . '" required><br /><br />
+	<a>Student Image Upload: </a><br /><input type="file" name="stud_img"></input><br /><br />';
 	
 	$tmp_disp = "";
 	if(file_exists('../data/img/student/' . $file . '.png')) {
