@@ -16,5 +16,6 @@
 				<li>Email: test@test.com</li>
 		</div>
 	</div>
+	<?php include("../include/footer.html"); ?>
 </body>
 </html>

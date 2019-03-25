@@ -1,16 +1,15 @@
+<?php include "../include/auth.php"; ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
-	<script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
-	<!--<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>-->
-	<!--<script src="https://unpkg.com/turndown/dist/turndown.js"></script>-->
 </head>
 <body>
 <!-- project viewer/form -->
 <?php
 	$file = $_GET["src"];
 	$fileArray = json_decode(file_get_contents('../data/json/' . $file . '.json'));
+	echo '<title>HMM Admin Editor | ' . $file .'</title>';
 	echo '<form action="../about/staff-action.php?dest=action" method="post" enctype="multipart/form-data">
 	
 	<a>Project Name: </a><input type="text" name="proj_name" value="' . $fileArray[0] . '" required><br />
@@ -46,6 +45,7 @@
 	<input type="submit">
 	</form><br />
 	<a href="../admin/"><button>Back to admin browser</button></a>';
+	include("../include/footer.html");
 ?>
 </body>
 </html>

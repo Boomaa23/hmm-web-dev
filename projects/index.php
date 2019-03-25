@@ -17,6 +17,7 @@
 		foreach($files as $file) {
 			
 			$fileArray = json_decode(file_get_contents($file));
+			if($fileArray != array("","","","","","")) {
 			if($ct % 2 == 0) {
 				// left side picture
 				echo '<tr>
@@ -54,6 +55,7 @@
 						<img class="inner-studentpicture" src="../data/img/project/' . basename($file, ".json") . '.png">
 					</td>
 				</tr>';
+			}
 			}
 			echo '<tr>
 					<td colspan="3"><hr /></td>

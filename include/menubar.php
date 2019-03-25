@@ -3,6 +3,7 @@
 <head>
 	<link href='../include/menubar-style.css' type='text/css' rel='stylesheet'/>
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Cinzel" rel="stylesheet">
+	<link rel="icon" href="http://www.impactmania.com/im/wp-content/uploads/2018/12/impactmania-favicon-57.jpg">
 	<title>ImpactMania & UCSB | Human Mind and Migration</title>
 </head>
 <body>

@@ -30,7 +30,9 @@ function action() {
 
 function add() {
 	include("../phputils.php");
-	file_put_contents('../data/json/' . generateRandomString(8) . '.json', json_encode(array("","","","","","")));
+	$filename = '../data/json/' . generateRandomString(8) . '.json';
+	file_put_contents($filename, json_encode(array("","","","","","")));
+	chmod($filename, 0755);
 }
 
 function remove() {
