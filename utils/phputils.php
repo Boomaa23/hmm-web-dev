@@ -11,4 +11,13 @@ function trim_text($input, $length) {
 function generateRandomString($length) {
 	return substr(str_shuffle(str_repeat($x='0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ' , ceil($length/strlen($x)) )),1,$length);
 }
+
+function removeDirectory($path) {
+ 	$files = glob($path . '/*');
+	foreach ($files as $file) {
+		is_dir($file) ? removeDirectory($file) : unlink($file);
+	}
+	rmdir($path);
+ 	return;
+}
 ?>

@@ -48,25 +48,23 @@ function projectAdd() {
 }
 
 function projectRemove() {
+		include("../utils/phputils.php");
+		$jsons = array(""); $pngs = array("");
 	if($_POST["project"] === "all") {
 		$jsons = glob("project/json/*.json", GLOB_BRACE);
 		$pngs = glob("project/img/*.png", GLOB_BRACE);
-		foreach($jsons as $json) {
-			unlink($json);
-		}
-		foreach($pngs as $png) {
-			unlink($png);
-		}
 	} else {
 		$png = 'project/img/' . $_POST["project"] . '.png';
 		$json = 'project/json/' . $_POST["project"] . '.json';
-		if(file_exists($png)) {
-			unlink($png);
-		}
-		if(file_exists($json)) {
-			unlink($json);
-		}
 	}
+
+	foreach($jsons as $json) {
+		unlink($json);
+	}
+	foreach($pngs as $png) {
+		unlink($png);
+	}
+	removeDirectory("project/web");
 }
 
 function staffAction() {
@@ -116,5 +114,5 @@ function staffRemove() {
 }
 
 echo '<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">';
-header("refresh:0; url=../admin/");
+header("refresh:10; url=../admin/");
 ?>
