@@ -8,7 +8,7 @@
 <!-- project viewer/form -->
 <?php
 	$file = $_GET["src"];
-	$fileArray = json_decode(file_get_contents('../data/json/' . $file . '.json'));
+	$fileArray = json_decode(file_get_contents('../data/project/json/' . $file . '.json'));
 	echo '<title>HMM Project Editor | ' . $file .'</title>';
 	echo '<form action="../data/data-action.php?dest=studentAction" method="post" enctype="multipart/form-data">
 	
@@ -25,9 +25,10 @@
 	
 	echo '<br /><a>Project Description: <br />
 	<textarea name="proj_desc" cols="70" rows="15" required>'
-	. $fileArray[4]. '</textarea><br />
+	. $fileArray[2]. '</textarea><br />
 	</a><div style="font-size:12px;"><a>(Supports <a href="http://cheatsheet.aboutmde.org/" target="_blank">Markdown</a>)</a></div>	
-	</form><br />
+	<a>Project ID: </a><input width="20px" type="text" name="filename" value="' . $file . '" readonly><br />
+	<input type="submit"></form><br />
 	<a href="../admin/"><button>Back to admin browser</button></a>';
 	include("../include/footer.html");
 ?>

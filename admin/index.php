@@ -16,16 +16,16 @@
 			$fileArray = json_decode(file_get_contents($file));
 			$file = trim(basename($file, ".json"));
 			if($fileArray != array("","","","")) {
-				echo '<a href="modify-staff.php?src=' . $file . '">' . $fileArray[0] . ' - (' . $file . ')</a><br />';
+				echo '<a href="modify-projects.php?src=' . $file . '">' . $fileArray[0] . ' - (' . $file . ')</a><br />';
 			} else {
-				echo '<a href="modify-staff.php?src=' . $file . '">NEW PROJECT - (' . $file . ')</a><br />';
+				echo '<a href="modify-projects.php?src=' . $file . '">NEW PROJECT - (' . $file . ')</a><br />';
 			}
 			echo "</td></tr>";
 		}
 		echo "</table></td><td><table>";
 		
-		$students = glob("../data/student/json/*.json", GLOB_BRACE);
-		foreach($students as $file) {
+		$staff = glob("../data/student/json/*.json", GLOB_BRACE);
+		foreach($staff as $file) {
 			echo "<tr><td>";
 			$fileArray = json_decode(file_get_contents($file));
 			$file = trim(basename($file, ".json"));
