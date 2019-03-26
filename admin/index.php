@@ -3,7 +3,7 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="../style-fixes.css">
-	<link rel="icon" href="http://www.impactmania.com/im/wp-content/uploads/2018/12/impactmania-favicon-57.jpg">
+	<?php echo '<link rel="icon" href="' . file_get_contents("../utils/icon.txt") . '">'; ?>
 	<title>HMM Admin Editor</title>
 </head>
 <body>
@@ -24,7 +24,7 @@
 		}
 		echo "</table></td><td><table>";
 		
-		$staff = glob("../data/student/json/*.json", GLOB_BRACE);
+		$staff = glob("../data/staff/json/*.json", GLOB_BRACE);
 		foreach($staff as $file) {
 			echo "<tr><td>";
 			$fileArray = json_decode(file_get_contents($file));
@@ -39,8 +39,8 @@
 		echo "</table></td>";
 		include("../include/footer.html");
 	?>
-	<br />	
 	</table>
+	<br />
 		
 	<!-- add a project -->
 	<form action="../data/data-action.php?dest=projectAdd" method="post">
@@ -49,18 +49,19 @@
 	
 	<!-- remove a project -->
 	<form action="../data/data-action.php?dest=projectRemove" method="post">
-		<input type="text" name="project" required>
+		<input type="text" name="project" placeholder="Project ID" required>
 		<input type="submit" value="Remove a Project">
 	</form>
+	<br />
 	
-	<!-- add a student -->
-	<form action="../data/data-action.php?dest=studentAdd" method="post">
+	<!-- add a staff -->
+	<form action="../data/data-action.php?dest=staffAdd" method="post">
 		<input type="submit" value="Add another Staff">
 	</form>
 	
-	<!-- remove a student -->
-	<form action="../data/data-action.php?dest=studentRemove" method="post">
-		<input type="text" name="student" required>
+	<!-- remove a staff -->
+	<form action="../data/data-action.php?dest=staffRemove" method="post">
+		<input type="text" name="staff" placeholder="Staff ID" required>
 		<input type="submit" value="Remove a Staff">
 	</form>
 </body>

@@ -10,43 +10,51 @@ if($_GET["dest"] == "projectAction") {
 	projectAdd();
 } else if($_GET["dest"] == "projectRemove") {
 	projectRemove();
-} else if($_GET["dest"] == "studentAction") {
-	studentAction();
-} else if($_GET["dest"] == "studentAdd") {
-	studentAdd();
-} else if($_GET["dest"] == "studentRemove") {
-	studentRemove();
+} else if($_GET["dest"] == "staffAction") {
+	staffAction();
+} else if($_GET["dest"] == "staffAdd") {
+	staffAdd();
+} else if($_GET["dest"] == "staffRemove") {
+	staffRemove();
 } else {
 	die("No request recieved");
 }
 
 function projectAction() {
-	if(isset($_POST["filename"]) && isset($_FILES["proj_img"])) {
-		imagepng(imagecreatefromstring(file_get_contents($_FILES["proj_img"]["tmp_name"])), '../data/project/img/' . $_POST["filename"] . '.png');
+	if($_FILES["proj_img"]) {
+		imagepng(imagecreatefromstring(file_get_contents($_FILES["proj_img"]["tmp_name"])), 'project/img/' . $_POST["filename"] . '.png');
 	}
 
-	$fn = '../data/project/json/' . $_POST["filename"] . '.json';
-	$data = array($_POST["proj_name"], MarkdownExtended::parse($_POST["proj_desc"])->getContent(), $_POST["proj_desc"], json_decode(file_get_contents($fn))[3]);
+	$linked = $_POST["linked"];
+	if(in_array("none", $_POST["linked"]) || !isset($_POST["linked"])) {
+		$linked = array("");
+	}
+	$fn = 'project/json/' . $_POST["filename"] . '.json';
+	$data = array($_POST["proj_name"], MarkdownExtended::parse($_POST["proj_desc"])->getContent(), $_POST["proj_desc"], $linked);
 	ftruncate(fopen($fn, "r+"), 0);
 	file_put_contents($fn, json_encode($data, FILE_APPEND));
 }
 
 function projectAdd() {
-	include("../phputils.php");
-	$filename = '../data/project/json/' . generateRandomString(8) . '.json';
+	include("../utils/phputils.php");
+	$filename = 'project/json/' . generateRandomString(8) . '.json';
 	file_put_contents($filename, json_encode(array("","","","")));
 	chmod($filename, 0755);
 }
 
 function projectRemove() {
 	if($_POST["project"] === "all") {
-		$projects = glob("../data/project/json/*.json", GLOB_BRACE);
-		foreach($projects as $file) {
-			unlink($file);
+		$jsons = glob("project/json/*.json", GLOB_BRACE);
+		$pngs = glob("project/img/*.png", GLOB_BRACE);
+		foreach($jsons as $json) {
+			unlink($json);
+		}
+		foreach($pngs as $png) {
+			unlink($png);
 		}
 	} else {
-		$png = '../data/project/img/' . $_POST["project"] . '.png';
-		$json = '../data/project/json/' . $_POST["project"] . '.json';
+		$png = 'project/img/' . $_POST["project"] . '.png';
+		$json = 'project/json/' . $_POST["project"] . '.json';
 		if(file_exists($png)) {
 			unlink($png);
 		}
@@ -56,33 +64,41 @@ function projectRemove() {
 	}
 }
 
-function studentAction() {
-	if(isset($_POST["filename"]) && isset($_FILES["stud_img"])) {
-		imagepng(imagecreatefromstring(file_get_contents($_FILES["stud_img"]["tmp_name"])), '../data/student/img/' . $_POST["filename"] . '.png');
+function staffAction() {
+	if($_FILES["staff_img"]) {
+		imagepng(imagecreatefromstring(file_get_contents($_FILES["staff_img"]["tmp_name"])), '/staff/img/' . $_POST["filename"] . '.png');
 	}
 
-	$fn = '../data/student/json/' . $_POST["filename"] . '.json';
-	$data = array($_POST["stud_name"], MarkdownExtended::parse($_POST["stud_desc"])->getContent(), $_POST["stud_desc"], json_decode(file_get_contents($fn))[3]);
+	$fn = 'staff/json/' . $_POST["filename"] . '.json';
+	$linked = $_POST["linked"];
+	if(in_array("none", $_POST["linked"]) || !isset($_POST["linked"])) {
+		$linked = array("");
+	}
+	$data = array($_POST["staff_name"], MarkdownExtended::parse($_POST["staff_desc"])->getContent(), $_POST["staff_desc"], $linked);
 	ftruncate(fopen($fn, "r+"), 0);
 	file_put_contents($fn, json_encode($data, FILE_APPEND));
 }
 
-function studentAdd() {
-	include("../phputils.php");
-	$filename = '../data/student/json/' . generateRandomString(8) . '.json';
+function staffAdd() {
+	include("../utils/phputils.php");
+	$filename = 'staff/json/' . generateRandomString(8) . '.json';
 	file_put_contents($filename, json_encode(array("","","","")));
 	chmod($filename, 0755);
 }
 
-function studentRemove() {
-	if($_POST["student"] === "all") {
-		$students = glob("../data/student/json/*.json", GLOB_BRACE);
-		foreach($students as $file) {
-			unlink($file);
+function staffRemove() {
+	if($_POST["staff"] === "all") {
+		$jsons = glob("staff/json/*.json", GLOB_BRACE);
+		$pngs = glob("staff/img/*.png", GLOB_BRACE);
+		foreach($jsons as $json) {
+			unlink($json);
+		}
+		foreach($pngs as $png) {
+			unlink($png);
 		}
 	} else {
-		$png = '../data/student/img/' . $_POST["student"] . '.png';
-		$json = '../data/student/json/' . $_POST["student"] . '.json';
+		$png = 'staff/img/' . $_POST["staff"] . '.png';
+		$json = 'staff/json/' . $_POST["staff"] . '.json';
 		if(file_exists($png)) {
 			unlink($png);
 		}
@@ -91,6 +107,7 @@ function studentRemove() {
 		}
 	}
 }
+
 echo '<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">';
 header("refresh:0; url=../admin/");
 ?>

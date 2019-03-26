@@ -4,6 +4,7 @@
 	<link rel="stylesheet" type="text/css" href="staff-style.css">
 	<link rel="stylesheet" type="text/css" href="../style-fixes.css">
 	<link rel="stylesheet" type="text/css" href="../fadein.css">
+	<?php echo '<link rel="icon" href="' . file_get_contents("../utils/icon.txt") . '">'; ?>
 </head>
 <body>
 	<?php include('../include/menubar.php');?>
