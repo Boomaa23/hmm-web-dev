@@ -17,7 +17,9 @@ function removeDirectory($path) {
 	foreach ($files as $file) {
 		is_dir($file) ? removeDirectory($file) : unlink($file);
 	}
-	rmdir($path);
+	if($path !== "project/web") {
+		rmdir($path);
+	}
  	return;
 }
 ?>

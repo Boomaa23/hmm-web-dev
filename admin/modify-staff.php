@@ -34,13 +34,13 @@
 	foreach($projects as $project) {
 		$staffArray = json_decode(file_get_contents('../data/staff/json/' . $file . '.json'));
 		$projectArray = json_decode(file_get_contents($project));
-		if(in_array(trim(basename($project, ".json")), $staffArray[3])) {
-			echo '<input type="checkbox" name="linked[]" value="' . basename($project, ".json") . '" checked>' . basename($project, ".json") . ' - ' . $projectArray[0] . '<br />';
+		if(in_array(trim(basename($file, ".json")), $projectArray[3])) {
+			echo '<input type="checkbox" name="linked[]" value="' . basename($project, ".json") . '" checked disabled="disabled">' . basename($project, ".json") . ' - ' . $projectArray[0] . '<br />';
 		} else {
-			echo '<input type="checkbox" name="linked[]" value="' . basename($project, ".json") . '">' . basename($project, ".json") . ' - ' . $projectArray[0] . '<br />';
+			echo '<input type="checkbox" name="linked[]" value="' . basename($project, ".json") . '" disabled="disabled">' . basename($project, ".json") . ' - ' . $projectArray[0] . '<br />';
 		}
 	}
-	echo '<input type="checkbox" name="linked[]" value="none">None<br /><br />';
+	echo '<input type="checkbox" name="linked[]" value="none" disabled="disabled">None<br /><br />';
 
 	echo '<input type="submit">
 	</form><br />
