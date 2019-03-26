@@ -20,8 +20,13 @@
 			<div class="panel">
 			  <?php include("staff.php"); ?>
 			</div>
-			
-			<button class="accordion">Interns</button>
+
+			<button class="accordion">Staff</button>
+			<div class="panel">
+			  <?php include("staff.php"); ?>
+			</div>
+
+			<button class="accordion">Technlogy Resources</button>
 			<div class="panel">
 			  <?php include("staff.php"); ?>
 			</div>
@@ -39,7 +44,7 @@
 			  panel.style.maxHeight = null;
 			} else {
 			  panel.style.maxHeight = panel.scrollHeight + "px";
-			} 
+			}
 		  });
 		}
 	</script>

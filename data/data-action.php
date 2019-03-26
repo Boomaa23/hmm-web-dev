@@ -21,13 +21,15 @@ if($_GET["dest"] == "projectAction") {
 }
 
 function projectAction() {
-	if($_FILES["proj_img"]) {
+	if($_FILES["proj_img"]["tmp_name"] != null) {
 		imagepng(imagecreatefromstring(file_get_contents($_FILES["proj_img"]["tmp_name"])), 'project/img/' . $_POST["filename"] . '.png');
 	}
 
-	$linked = $_POST["linked"];
-	if(in_array("none", $_POST["linked"]) || !isset($_POST["linked"])) {
+	$linked = array();
+	if(!isset($_POST["linked"]) || in_array("none", $_POST["linked"])) {
 		$linked = array("");
+	} else {
+		$linked = $_POST["linked"];
 	}
 	$fn = 'project/json/' . $_POST["filename"] . '.json';
 	$data = array($_POST["proj_name"], MarkdownExtended::parse($_POST["proj_desc"])->getContent(), $_POST["proj_desc"], $linked);
@@ -37,9 +39,12 @@ function projectAction() {
 
 function projectAdd() {
 	include("../utils/phputils.php");
-	$filename = 'project/json/' . generateRandomString(8) . '.json';
-	file_put_contents($filename, json_encode(array("","","","")));
+	$rand = generateRandomString(8);
+	$filename = 'project/json/' . $rand . '.json';
+	file_put_contents($filename, json_encode(array("","","",array(""))));
 	chmod($filename, 0755);
+	mkdir('project/web/' . $rand . '/');
+	copy('project/templates/index.php', 'project/web/' . $rand . '/index.php');
 }
 
 function projectRemove() {
@@ -65,14 +70,16 @@ function projectRemove() {
 }
 
 function staffAction() {
-	if($_FILES["staff_img"]) {
-		imagepng(imagecreatefromstring(file_get_contents($_FILES["staff_img"]["tmp_name"])), '/staff/img/' . $_POST["filename"] . '.png');
+	if($_FILES["staff_img"]["tmp_name"] != null) {
+		imagepng(imagecreatefromstring(file_get_contents($_FILES["staff_img"]["tmp_name"])), 'staff/img/' . $_POST["filename"] . '.png');
 	}
 
 	$fn = 'staff/json/' . $_POST["filename"] . '.json';
-	$linked = $_POST["linked"];
-	if(in_array("none", $_POST["linked"]) || !isset($_POST["linked"])) {
+	$linked = array();
+	if(!isset($_POST["linked"]) || in_array("none", $_POST["linked"])) {
 		$linked = array("");
+	} else {
+		$linked = $_POST["linked"];
 	}
 	$data = array($_POST["staff_name"], MarkdownExtended::parse($_POST["staff_desc"])->getContent(), $_POST["staff_desc"], $linked);
 	ftruncate(fopen($fn, "r+"), 0);
@@ -82,7 +89,7 @@ function staffAction() {
 function staffAdd() {
 	include("../utils/phputils.php");
 	$filename = 'staff/json/' . generateRandomString(8) . '.json';
-	file_put_contents($filename, json_encode(array("","","","")));
+	file_put_contents($filename, json_encode(array("","","",array(""))));
 	chmod($filename, 0755);
 }
 
