@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="../style-fixes.css">
-	<link rel="stylesheet" type="text/css" href="../fadein.css">
+	<link rel="stylesheet" type="text/css" href="../utils/style-fixes.css">
+	<link rel="stylesheet" type="text/css" href="../utils/fadein.css">
 	<link rel="stylesheet" type="text/css" href="index-style.css">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -11,7 +11,9 @@
 
 <body>
 <div class="body-container">
-	<?php include('../include/menubar.php'); ?>
+	<?php
+		include('../include/menubar.php');
+	?>
 
 	<div class="submenubar-body">
 		<div class="main-image">
@@ -27,41 +29,22 @@
 			<img src="../images/gallery/C.jpg"  class="gallery-img">
 			<div class="gallery-overlay">Testing C</div>
 		</div>
-			<script>
-			var myIndex = 0;
-			gallery();
-
-			function gallery() {
-			  var i;
-			  var x = document.getElementsByClassName("gallery");
-			  for (i = 0; i < x.length; i++) {
-				x[i].style.display = "none";
-			  }
-			  myIndex++;
-			  if (myIndex > x.length) {myIndex = 1}
-			  x[myIndex-1].style.display = "block";
-			  setTimeout(gallery, 10000);
-			}
-			</script>
+			<script src="../utils/gallery-helper.js"></script>
 		</div>
-
 		<div class="grid-container">
-			<div class="body-panel">
-				<h1>Hello there</h1>
-				<p>testing testing</p>
-			</div>
-			<div class="body-panel">
-				<h1>Hello there</h1>
-				<p>testing testing</p>
-			</div>
-			<div class="body-panel">
-				<h1>Hello there</h1>
-				<p>testing testing</p>
-			</div>
-			<div class="body-panel">
-				<h1>Hello there</h1>
-				<p>testing testing</p>
-			</div>
+			<?php
+				$news = glob("../data/news/*.json");
+				array_multisort(array_map('filemtime', $news), SORT_NUMERIC, SORT_ASC, $news);
+				include("../utils/phputils.php");
+				foreach($news as $article) {
+					$article = json_decode(file_get_contents($article));
+					echo '<div class="body-panel">
+					<h1>' . $article[0] . '</h1>
+					<h3>' . $article[1] . '</h3>
+					<p>' . trim_text($article[2], 350) . '</p>
+					</div>';
+				}
+			?>
 		</div>
 	</div>
 </div>

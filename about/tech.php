@@ -2,7 +2,7 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="staff-style.css">
-	<link rel="stylesheet" type="text/css" href="../style-fixes.css">
+	<link rel="stylesheet" type="text/css" href="../utils/style-fixes.css">
 </head>
 <body>
 	<div class="submenubar-body">

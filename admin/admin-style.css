@@ -1,5 +1,5 @@
 /* This is a bit redundant b/c it's hidden already*/
-input:not(.mod) {
+input:not(.mod):not(.accordion) {
   border: none;
   display: inline;
   font-family: inherit;
@@ -11,7 +11,7 @@ input:not(.mod):focus {
   outline: none;
 }
 
-button:not(.mod) {
+button:not(.mod):not(.accordion) {
   padding:3px;
   border: none;
   background:none;

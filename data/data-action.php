@@ -1,23 +1,19 @@
 <?php
-
 require '../utils/markdown-extended/src/bootstrap.php';
 use \MarkdownExtended\MarkdownExtended;
 
+switch($_GET["dest"]) {
+	case ("projectAction"): projectAction(); break;
+	case ("projectAdd"): projectAdd(); break;
+	case ("projectRemove"): projectRemove(); break;
 
-if($_GET["dest"] == "projectAction") {
-	projectAction();
-} else if($_GET["dest"] == "projectAdd") {
-	projectAdd();
-} else if($_GET["dest"] == "projectRemove") {
-	projectRemove();
-} else if($_GET["dest"] == "staffAction") {
-	staffAction();
-} else if($_GET["dest"] == "staffAdd") {
-	staffAdd();
-} else if($_GET["dest"] == "staffRemove") {
-	staffRemove();
-} else {
-	die("No request recieved");
+	case ("staffAction"): staffAction(); break;
+	case ("staffAdd"): staffAdd(); break;
+	case ("staffRemove"): staffRemove(); break;
+
+	case ("newsAction"): newsAction(); break;
+	case ("newsAdd"): newsAdd(); break;
+	case ("newsRemove"): newsRemove(); break;
 }
 
 function projectAction() {
@@ -106,6 +102,34 @@ function staffRemove() {
 		if(file_exists($png)) {
 			unlink($png);
 		}
+		if(file_exists($json)) {
+			unlink($json);
+		}
+	}
+}
+
+function newsAction() {
+	$fn = 'news/' . $_POST["filename"] . '.json';
+	$data = array($_POST["article_name"], $_POST["author"], MarkdownExtended::parse($_POST["article_desc"])->getContent(), $_POST["article_desc"]);
+	ftruncate(fopen($fn, "r+"), 0);
+	file_put_contents($fn, json_encode($data, FILE_APPEND));
+}
+
+function newsAdd() {
+	include("../utils/phputils.php");
+	$filename = 'news/' . round(microtime(true) * 1000) . '.json';
+	file_put_contents($filename, json_encode(array("","","","")));
+	chmod($filename, 0755);
+}
+
+function newsRemove() {
+	if($_POST["article"] === "all") {
+		$jsons = glob("news/*.json", GLOB_BRACE);
+		foreach($jsons as $json) {
+			unlink($json);
+		}
+	} else {
+		$json = 'news/' . $_POST["article"] . '.json';
 		if(file_exists($json)) {
 			unlink($json);
 		}
