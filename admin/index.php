@@ -20,7 +20,10 @@
 			}
 			$x = "'" . $file ."'";
 			echo ' - <input id="' . $file . '" value="' . $file . '" readonly size="7"></input>
-			<button onclick="copyToClipboard(' . $x . ')"><img src="../paste.png" height="20"></img></button><br />';
+			<button class="tooltip" onclick="copyToClipboard(' . $x . ')">
+			<img src="../images/paste.png" height="20"></img>
+			<span class="tooltiptext">Copy ID</span>
+			</button><br />';
 		}
 		?>
 
@@ -40,14 +43,17 @@
 		foreach($staff as $file) {
 			$fileArray = json_decode(file_get_contents($file));
 			$file = trim(basename($file, ".json"));
-			if($fileArray != array("","","")) {
+			if($fileArray != array("","","","")) {
 				echo '<a href="modify-staff.php?src=' . $file . '">' . $fileArray[0] . '</a>';
 			} else {
 				echo '<a href="modify-staff.php?src=' . $file . '">NEW STAFF</a>';
 			}
 			$x = "'" . $file ."'";
 			echo ' - <input id="' . $file . '" value="' . $file . '" readonly size="7"></input>
-			<button onclick="copyToClipboard(' . $x . ')"><img src="../paste.png" height="20"></img></button><br />';
+			<button class="tooltip" onclick="copyToClipboard(' . $x . ')">
+			<img src="../images/paste.png" height="20"></img>
+			<span class="tooltiptext">Copy ID</span>
+			</button><br />';
 		}
 		include("../include/footer.html");
 	?>

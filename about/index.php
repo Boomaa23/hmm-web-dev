@@ -16,38 +16,28 @@
 			  <?php include("im-history.php"); ?>
 			</div>
 
+			<button class="accordion">Prinicpal Investigators / Project Leaders</button>
+			<div class="panel">
+			  <?php include("head.php"); ?>
+			</div>
+
+			<button class="accordion">Affiliated Faculty, Organizations, Program Leaders</button>
+			<div class="panel">
+			  <?php include("faculty.php"); ?>
+			</div>
+
 			<button class="accordion">Interns</button>
 			<div class="panel">
-			  <?php include("staff.php"); ?>
+			  <?php include("interns.php"); ?>
 			</div>
 
-			<button class="accordion">Staff</button>
+			<button class="accordion">Technology Resources</button>
 			<div class="panel">
-			  <?php include("staff.php"); ?>
-			</div>
-
-			<button class="accordion">Technlogy Resources</button>
-			<div class="panel">
-			  <?php include("staff.php"); ?>
+			  <?php include("tech.php"); ?>
 			</div>
 		</div>
 	</div>
-	<script>
-		var acc = document.getElementsByClassName("accordion");
-		var i;
-
-		for (i = 0; i < acc.length; i++) {
-		  acc[i].addEventListener("click", function() {
-			this.classList.toggle("active");
-			var panel = this.nextElementSibling;
-			if (panel.style.maxHeight){
-			  panel.style.maxHeight = null;
-			} else {
-			  panel.style.maxHeight = panel.scrollHeight + "px";
-			}
-		  });
-		}
-	</script>
+	<script src="folding-helper.js"></script>
 	<?php include('../include/footer.html'); ?>
 </body>
 </html>

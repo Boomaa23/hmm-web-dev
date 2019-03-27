@@ -18,12 +18,20 @@
 		foreach($files as $file) {
 			$fileArray = json_decode(file_get_contents($file));
 			if($fileArray != array("","","",array(""))) {
+				$contributors = array();
+				for($i = 0;$i < sizeof($fileArray[3]);$i++) {
+					$fn = '../data/staff/json/' . $fileArray[3][$i] . '.json';
+					if(file_exists($fn)) {
+						array_push($contributors, json_decode(file_get_contents($fn))[0]);
+					}
+				}
+				$p = '../data/project/img/' . basename($file, ".json") . '.png';
+				if(!file_exists($p)) {
+					//$x = '../images/project_placeholder.png';
+					$p = "http://www.impactmania.com/im/wp-content/uploads/2018/10/Impact-Mania_logo-2.png";
+				}
 				if($ct % 2 != 0) {
 					// left side picture
-					$contributors = array();
-					for($i = 0;$i < sizeof($fileArray[3]);$i++) {
-						array_push($contributors, json_decode(file_get_contents('../data/staff/json/' . $fileArray[3][$i] . '.json'))[0]);
-					}
 					echo '<tr>
 						<td class="table-studentname table-left table-element">
 							<a class="inner-studentname">' . implode(", ", $contributors) . '</a>
@@ -34,7 +42,7 @@
 					</tr>
 					<tr>
 						<td class="table-studentpicture table-left table-element">
-							<img class="inner-studentpicture" src="../data/project/img/' . basename($file, ".json") . '.png">
+							<img class="inner-studentpicture" src="' . $p . '">
 						</td>
 						<td colspan="2" class="table-projectbrief table-right table-element">
 							<span class="inner-projectbrief">' . $fileArray[1] . '</span>
@@ -43,10 +51,6 @@
 
 				} else {
 					// right side picture
-					$contributors = array();
-					for($i = 0;$i < sizeof($fileArray[3]);$i++) {
-						array_push($contributors, json_decode(file_get_contents('../data/staff/json/' . $fileArray[3][$i] . '.json'))[0]);
-					}
 					echo '<tr>
 						<td colspan="2" class="table-projectname table-left table-element">
 							<a class="inner-projectname" href="../data/project/web/' . basename($file, ".json") . '/">' . $fileArray[0] . '</a>
@@ -60,7 +64,7 @@
 							<span class="inner-projectbrief">' . $fileArray[1] . '</span>
 						</td>
 						<td class="table-studentpicture table-right table-element">
-							<img class="inner-studentpicture" src="../data/project/img/' . basename($file, ".json") . '.png">
+							<img class="inner-studentpicture" src="' . $p . '">
 						</td>
 					</tr>';
 				}

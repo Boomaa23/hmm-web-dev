@@ -69,8 +69,6 @@ function projectRemove() {
 			unlink($json);
 		}
 	}
-
-
 	removeDirectory("project/web");
 }
 
@@ -79,7 +77,7 @@ function staffAction() {
 		imagepng(imagecreatefromstring(file_get_contents($_FILES["staff_img"]["tmp_name"])), 'staff/img/' . $_POST["filename"] . '.png');
 	}
 	$fn = 'staff/json/' . $_POST["filename"] . '.json';
-	$data = array($_POST["staff_name"], MarkdownExtended::parse($_POST["staff_desc"])->getContent(), $_POST["staff_desc"]);
+	$data = array($_POST["staff_name"], MarkdownExtended::parse($_POST["staff_desc"])->getContent(), $_POST["staff_desc"], $_POST["group"]);
 	ftruncate(fopen($fn, "r+"), 0);
 	file_put_contents($fn, json_encode($data), FILE_APPEND);
 }
@@ -87,7 +85,7 @@ function staffAction() {
 function staffAdd() {
 	include("../utils/phputils.php");
 	$filename = 'staff/json/' . generateRandomString(8) . '.json';
-	file_put_contents($filename, json_encode(array("","","")));
+	file_put_contents($filename, json_encode(array("","","","")));
 	chmod($filename, 0755);
 }
 
@@ -104,6 +102,7 @@ function staffRemove() {
 	} else {
 		$png = 'staff/img/' . $_POST["staff"] . '.png';
 		$json = 'staff/json/' . $_POST["staff"] . '.json';
+
 		if(file_exists($png)) {
 			unlink($png);
 		}

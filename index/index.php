@@ -12,39 +12,39 @@
 <body>
 <div class="body-container">
 	<?php include('../include/menubar.php'); ?>
-	
+
 	<div class="submenubar-body">
 		<div class="main-image">
 		<div class="gallery">
-			<img src="../gallery/A.jpg" class="gallery-img">
+			<img src="../images/gallery/A.jpg" class="gallery-img">
 			<div class="gallery-overlay">Testing A</div>
 		</div>
 		<div class="gallery gallery-img">
-			<img src="../gallery/B.jpg" class="gallery-img">
+			<img src="../images/gallery/B.jpg" class="gallery-img">
 			<div class="gallery-overlay">Testing B</div>
 		</div>
 		<div class="gallery gallery-img">
-			<img src="../gallery/C.jpg"  class="gallery-img">
+			<img src="../images/gallery/C.jpg"  class="gallery-img">
 			<div class="gallery-overlay">Testing C</div>
 		</div>
 			<script>
 			var myIndex = 0;
 			gallery();
-			
+
 			function gallery() {
 			  var i;
 			  var x = document.getElementsByClassName("gallery");
 			  for (i = 0; i < x.length; i++) {
-				x[i].style.display = "none";  
+				x[i].style.display = "none";
 			  }
 			  myIndex++;
-			  if (myIndex > x.length) {myIndex = 1}    
-			  x[myIndex-1].style.display = "block";  
+			  if (myIndex > x.length) {myIndex = 1}
+			  x[myIndex-1].style.display = "block";
 			  setTimeout(gallery, 10000);
 			}
 			</script>
 		</div>
-		
+
 		<div class="grid-container">
 			<div class="body-panel">
 				<h1>Hello there</h1>
