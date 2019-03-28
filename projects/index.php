@@ -14,7 +14,7 @@
 	<div class="table-container"align="center">
 		<table cellspacing="25">
 		<?php
-		include("../utils/display-helper.php");
+		include("project-display.php");
 		$files = glob("../data/project/json/*.json", GLOB_BRACE);
 		$ct = 0;
 		foreach($files as $file) {

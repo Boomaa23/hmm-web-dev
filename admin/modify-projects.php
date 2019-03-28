@@ -41,7 +41,16 @@
 			echo '<input type="checkbox" name="linked[]" value="' . basename($person, ".json") . '">' . basename($person, ".json") . ' - ' . $personArray[0] . '<br />';
 		}
 	}
-	echo '<input type="checkbox" name="linked[]" value="none">None<br /><br />';
+	echo '<input type="checkbox" name="linked[]" value="none">None<br /><br />
+	<a>Display on News Feed?</a><br />';
+	$yes = null; $no = null;
+	if($fileArray[4] === "yes") {
+		$yes = 'checked="checked"';
+	} else if($fileArray[4] === "no") {
+		$no = 'checked="checked"';
+	}
+	echo '<input type="radio" name="on_news_feed" ' . $yes . ' value="yes" required>Yes<br />';
+	echo '<input type="radio" name="on_news_feed" ' . $no . ' value="no">No<br /><br />';
 
 	echo '<input type="submit"></form><br />
 	<a href="../admin/"><button>Back to admin browser</button></a>';

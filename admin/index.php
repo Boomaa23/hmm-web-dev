@@ -30,7 +30,7 @@
 			foreach($projects as $file) {
 				$fileArray = json_decode(file_get_contents($file));
 				$file = trim(basename($file, ".json"));
-				if($fileArray != array("","","",array(""))) {
+				if($fileArray != array("","","",array(""),"")) {
 					echo '<a href="modify-projects.php?src=' . $file . '">' . $fileArray[0] . '</a>';
 				} else {
 					echo '<a href="modify-projects.php?src=' . $file . '">NEW PROJECT</a>';

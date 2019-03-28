@@ -28,7 +28,7 @@ function projectAction() {
 		$linked = $_POST["linked"];
 	}
 	$fn = 'project/json/' . $_POST["filename"] . '.json';
-	$data = array($_POST["proj_name"], MarkdownExtended::parse($_POST["proj_desc"])->getContent(), $_POST["proj_desc"], $linked);
+	$data = array($_POST["proj_name"], MarkdownExtended::parse($_POST["proj_desc"])->getContent(), $_POST["proj_desc"], $linked, $_POST["on_news_feed"]);
 	ftruncate(fopen($fn, "r+"), 0);
 	file_put_contents($fn, json_encode($data, FILE_APPEND));
 }
@@ -37,15 +37,15 @@ function projectAdd() {
 	include("../utils/phputils.php");
 	$rand = generateRandomString(8);
 	$filename = 'project/json/' . $rand . '.json';
-	file_put_contents($filename, json_encode(array("","","",array(""))));
+	file_put_contents($filename, json_encode(array("","","",array(""),"")));
 	chmod($filename, 0755);
 	mkdir('project/web/' . $rand . '/');
 	copy('project/templates/index.php', 'project/web/' . $rand . '/index.php');
 }
 
 function projectRemove() {
-		include("../utils/phputils.php");
-		$jsons = array(""); $pngs = array("");
+	include("../utils/phputils.php");
+	$jsons = array(""); $pngs = array("");
 	if($_POST["project"] === "all") {
 		$jsons = glob("project/json/*.json", GLOB_BRACE);
 		$pngs = glob("project/img/*.png", GLOB_BRACE);

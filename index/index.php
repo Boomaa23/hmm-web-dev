@@ -44,6 +44,25 @@
 					<p>' . trim_text($article[2], 350) . '</p>
 					</div>';
 				}
+
+				$newsProjects = glob("../data/project/json/*.json");
+				foreach($newsProjects as $project) {
+					$project = json_decode(file_get_contents($project));
+					if($project[4] === "yes") {
+						$contributors = array();
+						for($i = 0;$i < sizeof($project[3]);$i++) {
+							$fn = '../data/staff/json/' . $project[3][$i] . '.json';
+							if(file_exists($fn)) {
+								array_push($contributors, json_decode(file_get_contents($fn))[0]);
+							}
+						}
+						echo '<div class="body-panel">
+						<h1>' . $project[0] . '</h1>
+						<h3>' . implode(", ", $contributors) . '</h3>
+						<p>' . trim_text($project[2], 350) . '</p>
+						</div>';
+					}
+				}
 			?>
 		</div>
 	</div>
