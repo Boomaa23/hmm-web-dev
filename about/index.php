@@ -2,6 +2,7 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="staff-style.css">
+	<link rel="stylesheet" type="text/css" href="../utils/display-style.css">
 	<link rel="stylesheet" type="text/css" href="../utils/style-fixes.css">
 	<link rel="stylesheet" type="text/css" href="../utils/fadein.css">
 	<link rel="stylesheet" type="text/css" href="../utils/global-headers.css">

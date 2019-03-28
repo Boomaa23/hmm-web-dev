@@ -4,6 +4,7 @@
 	<link rel="stylesheet" type="text/css" href="../utils/style-fixes.css">
 	<link rel="stylesheet" type="text/css" href="../utils/fadein.css">
 	<link rel="stylesheet" type="text/css" href="../utils/global-headers.css">
+	<link rel="stylesheet" type="text/css" href="../utils/display-style.css">
 	<link rel="stylesheet" type="text/css" href="project-index-style.css">
 	<?php echo '<link rel="icon" href="' . file_get_contents("../utils/icon.txt") . '">'; ?>
 </head>
@@ -14,7 +15,7 @@
 	<div class="table-container"align="center">
 		<table cellspacing="25">
 		<?php
-		include("project-display.php");
+		include("../utils/display-helper.php");
 		$files = glob("../data/project/json/*.json", GLOB_BRACE);
 		$ct = 0;
 		foreach($files as $file) {
