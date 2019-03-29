@@ -2,17 +2,17 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="staff-style.css">
-	<link rel="stylesheet" type="text/css" href="../utils/display-style.css">
-	<link rel="stylesheet" type="text/css" href="../utils/style-fixes.css">
-	<link rel="stylesheet" type="text/css" href="../utils/fadein.css">
-	<link rel="stylesheet" type="text/css" href="../utils/global-headers.css">
-	<link rel="stylesheet" type="text/css" href="../utils/folding-style.css">
+	<link rel="stylesheet" type="text/css" href="../utils/css/display-style.css">
+	<link rel="stylesheet" type="text/css" href="../utils/css/style-fixes.css">
+	<link rel="stylesheet" type="text/css" href="../utils/css/fadein.css">
+	<link rel="stylesheet" type="text/css" href="../utils/css/global-headers.css">
+	<link rel="stylesheet" type="text/css" href="../utils/css/folding-style.css">
 	<?php echo '<link rel="icon" href="' . file_get_contents("../utils/icon.txt") . '">'; ?>
 </head>
 <body>
 	<?php
 		include('../include/menubar.php');
-		include("../utils/display-helper.php");
+		include("../utils/php/display-helper.php");
 	?>
 	<div class="submenubar-body">
 		<span class="submenubar-header"><h1>About Us<hr width="300px" /></h1></span>
@@ -43,7 +43,7 @@
 			</div>
 		</div>
 	</div>
-	<script src="../utils/folding-helper.js"></script>
+	<script type="text/javascript" src="../utils/js/folding-helper.js"></script>
 	<?php include('../include/footer.html'); ?>
 </body>
 </html>

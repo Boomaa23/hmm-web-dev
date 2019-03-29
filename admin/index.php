@@ -2,9 +2,9 @@
 
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="../utils/style-fixes.css">
+	<link rel="stylesheet" type="text/css" href="../utils/css/style-fixes.css">
 	<link rel="stylesheet" type="text/css" href="admin-style.css">
-	<link rel="stylesheet" type="text/css" href="../utils/folding-style.css">
+	<link rel="stylesheet" type="text/css" href="../utils/css/folding-style.css">
 	<?php echo '<link rel="icon" href="' . file_get_contents("../utils/icon.txt") . '">'; ?>
 	<title>HMM Admin Editor</title>
 </head>
@@ -113,7 +113,7 @@
 	</div>
 </div>
 </body>
-<script type="text/javascript" src="../utils/jsutils.js"></script>
-<script src="../utils/folding-helper.js"></script>
+<script type="text/javascript" src="../utils/js/jsutils.js"></script>
+<script type="text/javascript" src="../utils/js/folding-helper.js"></script>
 <?php include("../include/footer.html"); ?>
 </html>

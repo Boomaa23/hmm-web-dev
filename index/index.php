@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="../utils/style-fixes.css">
-	<link rel="stylesheet" type="text/css" href="../utils/fadein.css">
+	<link rel="stylesheet" type="text/css" href="../utils/css/style-fixes.css">
+	<link rel="stylesheet" type="text/css" href="../utils/css/fadein.css">
 	<link rel="stylesheet" type="text/css" href="index-style.css">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -29,7 +29,7 @@
 			<img src="../images/gallery/C.jpg"  class="gallery-img">
 			<div class="gallery-overlay">Testing C</div>
 		</div>
-			<script src="../utils/gallery-helper.js"></script>
+			<script src="../utils/js/gallery-helper.js"></script>
 		</div>
 		<div class="grid-container">
 			<?php
