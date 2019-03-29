@@ -15,6 +15,7 @@
 	<?php include('../include/footer.html'); ?>
 	<div class="submenubar-body">
 		<span class="submenubar-header"><h1>Your Story<hr width="300px" /></h1></span>
+		<form 
 	</div>
 </div>
 </body>

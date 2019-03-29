@@ -22,4 +22,29 @@ function removeDirectory($path) {
 	}
  	return;
 }
+
+function email($data, $subject, $target) {
+	if(isarray($data)) {
+		$data = json_encode($data);
+	}
+	if(isarray($target)) {
+		for($t = 0;$t < sizeof($target);$t++) {
+			if(mb_check_encoding($target[$t], 'UTF-8')) {
+				$at = strpos($target[$t], "@")
+				$dot = strpos($target[$t], "."
+				if(!(($at && $dot) || ($at < $dot) || ($at != 0))) {
+					unset($target[$t]);
+				}
+			} else {
+				unset($target[$t]);
+			}
+		}
+
+		if(sizeof($target) > 0) {
+			mail(implode(", ", $target), $subject, $data);
+		}
+	} else {
+		mail($target, $subject, $data);
+	}
+}
 ?>

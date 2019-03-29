@@ -12,7 +12,7 @@
 	<div class="accordion-container">
 		<!-- blank folding section to avoid auto-click of ../utils/folding-helper.js -->
 		<button class="accordion" style="display:none;"></button>
-		<button class="accordion">Projects</button>
+		<button class="accordion">Case Studies / Projects</button>
 		<div class="panel"><br />
 		<!-- add a project -->
 		<form action="../data/data-action.php?dest=projectAdd" method="post">
@@ -46,7 +46,7 @@
 		<br />
 
 		</div>
-		<button class="accordion">Staff</button>
+		<button class="accordion">Staff / Faculty / Interns</button>
 		<div class="panel"><br />
 			<!-- add a staff -->
 			<form action="../data/data-action.php?dest=staffAdd" method="post">
@@ -80,7 +80,7 @@
 			<br />
 	</div>
 
-	<button class="accordion">News</button>
+	<button class="accordion">News Articles</button>
 	<div class="panel"><br />
 		<!-- add a news article -->
 		<form action="../data/data-action.php?dest=newsAdd" method="post">
@@ -110,6 +110,10 @@
 			</button><br />';
 		}
 	?>
+	</div>
+	<button class="accordion">HMM Story Submissions</button>
+	<div class="panel"><br />
+
 	</div>
 </div>
 </body>
