@@ -37,11 +37,11 @@
 				array_multisort(array_map('filemtime', $news), SORT_NUMERIC, SORT_ASC, $news);
 				include("../utils/phputils.php");
 				foreach($news as $article) {
-					$article = json_decode(file_get_contents($article));
+					$articleArray = json_decode(file_get_contents($article));
 					echo '<div class="body-panel">
-					<h1>' . $article[0] . '</h1>
-					<h3>' . $article[1] . '</h3>
-					<p>' . trim_text($article[2], 350) . '</p>
+					<h1><a href="../news/#' . basename($article, ".json") . '">' . $articleArray[0] . '</a></h1>
+					<h3>' . $articleArray[1] . '</h3>
+					<p>' . trim_text($articleArray[2], 250) . '</p>
 					</div>';
 				}
 
