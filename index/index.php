@@ -11,9 +11,7 @@
 
 <body>
 <div class="body-container">
-	<?php
-		include('../include/menubar.php');
-	?>
+	<?php include('../include/menubar.php'); ?>
 
 	<div class="submenubar-body">
 		<div class="main-image">
