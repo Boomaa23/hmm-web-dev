@@ -15,7 +15,7 @@
 	<div class="table-container"align="center">
 		<table cellspacing="25">
 		<?php
-		include("../utils/display-helper.php");
+		include("../utils/php/display-helper.php");
 		$files = glob("../data/project/json/*.json", GLOB_BRACE);
 		$ct = 0;
 		foreach($files as $file) {
@@ -30,9 +30,9 @@
 				}
 				$picture = '../data/project/img/' . basename($file, ".json") . '.png';
 				if($ct % 2 != 0) {
-					leftPicture($fileArray, $file, $contributors, $picture);
+					leftPicture($fileArray, $file, $contributors, $picture, "project");
 				} else {
-					rightPicture($fileArray, $file, $contributors, $picture);
+					rightPicture($fileArray, $file, $contributors, $picture, "project");
 				}
 			}
 			echo '<tr>

@@ -97,17 +97,17 @@
 		foreach($news as $file) {
 			$fileArray = json_decode(file_get_contents($file));
 			$file = trim(basename($file, ".json"));
-			if($fileArray != array("","","","")) {
+			if($fileArray != array("","","","","","")) {
 				echo '<a href="modify-news.php?src=' . $file . '">' . $fileArray[0] . '</a>';
 			} else {
 				echo '<a href="modify-news.php?src=' . $file . '">NEW NEWS ARTICLE</a>';
 			}
 			$x = "'" . $file ."'";
-			echo ' - <input id="' . $file . '" value="' . $file . '" readonly size="9"></input>
+			echo ' - <input id="' . $file . '" value="' . $file . '" readonly size="7"></input>
 			<button class="tooltip" onclick="copyToClipboard(' . $x . ')">
 			<img src="../images/paste.png" height="20"></img>
 			<span class="tooltiptext">Copy ID</span>
-			</button><br />';
+			</button><br /><br />';
 		}
 	?>
 	</div>

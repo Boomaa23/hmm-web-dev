@@ -34,7 +34,7 @@ function projectAction() {
 }
 
 function projectAdd() {
-	include("../utils/phputils.php");
+	include("../utils/php/phputils.php");
 	$rand = generateRandomString(8);
 	$filename = 'project/json/' . $rand . '.json';
 	file_put_contents($filename, json_encode(array("","","",array(""),"")));
@@ -44,7 +44,7 @@ function projectAdd() {
 }
 
 function projectRemove() {
-	include("../utils/phputils.php");
+	include("../utils/php/phputils.php");
 	$jsons = array(""); $pngs = array("");
 	if($_POST["project"] === "all") {
 		$jsons = glob("project/json/*.json", GLOB_BRACE);
@@ -54,6 +54,19 @@ function projectRemove() {
 		}
 		foreach($pngs as $png) {
 			unlink($png);
+		}
+	} else if(strpos($_POST["project"], ",") >= 0) {
+		$toRemove = explode(",", $_POST["project"]);
+		foreach($toRemove as $remove) {
+			$png = 'staff/img/' . $remove . '.png';
+			$json = 'staff/json/' . $remove . '.json';
+
+			if(file_exists($png)) {
+				unlink($png);
+			}
+			if(file_exists($json)) {
+				unlink($json);
+			}
 		}
 	} else {
 		$png = 'project/img/' . $_POST["project"] . '.png';
@@ -79,7 +92,7 @@ function staffAction() {
 }
 
 function staffAdd() {
-	include("../utils/phputils.php");
+	include("../utils/php/phputils.php");
 	$filename = 'staff/json/' . generateRandomString(8) . '.json';
 	file_put_contents($filename, json_encode(array("","","","")));
 	chmod($filename, 0755);
@@ -94,6 +107,19 @@ function staffRemove() {
 		}
 		foreach($pngs as $png) {
 			unlink($png);
+		}
+	} else if(strpos($_POST["staff"], ",") >= 0) {
+		$toRemove = explode(",", $_POST["staff"]);
+		foreach($toRemove as $remove) {
+			$png = 'staff/img/' . $remove . '.png';
+			$json = 'staff/json/' . $remove . '.json';
+
+			if(file_exists($png)) {
+				unlink($png);
+			}
+			if(file_exists($json)) {
+				unlink($json);
+			}
 		}
 	} else {
 		$png = 'staff/img/' . $_POST["staff"] . '.png';
@@ -110,15 +136,15 @@ function staffRemove() {
 
 function newsAction() {
 	$fn = 'news/' . $_POST["filename"] . '.json';
-	$data = array($_POST["article_name"], $_POST["author"], MarkdownExtended::parse($_POST["article_desc"])->getContent(), $_POST["article_desc"]);
+	$data = array($_POST["article_name"], $_POST["author"], MarkdownExtended::parse($_POST["article_desc"])->getContent(), $_POST["article_desc"], $_POST["on_news_feed"], $_POST["date"]);
 	ftruncate(fopen($fn, "r+"), 0);
 	file_put_contents($fn, json_encode($data, FILE_APPEND));
 }
 
 function newsAdd() {
-	include("../utils/phputils.php");
-	$filename = 'news/' . round(microtime(true) * 1000) . '.json';
-	file_put_contents($filename, json_encode(array("","","","")));
+	include("../utils/php/phputils.php");
+	$filename = 'news/' . generateRandomString(8) . '.json';
+	file_put_contents($filename, json_encode(array("","","","","","")));
 	chmod($filename, 0755);
 }
 
@@ -127,6 +153,14 @@ function newsRemove() {
 		$jsons = glob("news/*.json", GLOB_BRACE);
 		foreach($jsons as $json) {
 			unlink($json);
+		}
+	} else if(strpos($_POST["article"], ",") >= 0) {
+		$toRemove = explode(",", $_POST["article"]);
+		foreach($toRemove as $remove) {
+			$json = 'news/' . trim($remove) . '.json';
+			if(file_exists($json)) {
+				unlink($json);
+			}
 		}
 	} else {
 		$json = 'news/' . $_POST["article"] . '.json';

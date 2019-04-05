@@ -8,6 +8,7 @@
 <body>
 <!-- project viewer/form -->
 <?php
+	date_default_timezone_set('UTC');
 	$file = $_GET["src"];
 	$fileArray = json_decode(file_get_contents('../data/news/' . $file . '.json'));
 	echo '<title>HMM News Editor | ' . $file .'</title>';
@@ -19,7 +20,22 @@
 	echo '<br /><a>News Article Description:</a><br />
 	<textarea name="article_desc" cols="70" rows="15" required>' . $fileArray[3]. '</textarea><br />
 	</a><div style="font-size:12px;"><a>(Supports <a href="http://cheatsheet.aboutmde.org/" target="_blank">Markdown</a>)</a></div>
-	<br /><a>News Article ID: </a><input width="20px" type="text" name="filename" value="' . $file . '" readonly><br />';
+
+	<br /><a>Display on News Feed?</a><br />';
+	$yes = null; $no = null;
+	if($fileArray[4] === "yes") {
+		$yes = 'checked="checked"';
+	} else if($fileArray[4] === "no") {
+		$no = 'checked="checked"';
+	}
+	echo '<input type="radio" name="on_news_feed" ' . $yes . ' value="yes" required>Yes<br />';
+	echo '<input type="radio" name="on_news_feed" ' . $no . ' value="no">No<br />';
+
+	echo '<br /><a>Last UTC Modification Date: <i>' . $fileArray[5] . '</i></a>
+	<input style="display:none;" value="' . date("n/j/Y") . '" name="date" />
+	<input style="display:none;" value="' . $file . '" name="filename" />
+	<br /><a>News Article ID: <i>' . $file . '</i></a><br />';
+
 	echo '<input type="submit">
 	</form><br />
 	<a href="../admin/"><button>Back to admin browser</button></a>';

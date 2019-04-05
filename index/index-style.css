@@ -21,8 +21,8 @@ body {
 
 .body-panel h3 {
 	text-align: center;
-	margin:0;
 	font-style: italic;
+	margin:0;
 }
 
 .body-panel {
@@ -34,6 +34,11 @@ body {
 
 .body-panel p {
 	padding-left:10px;
+}
+
+.article-date {
+	font-size: 16px;
+	vertical-align: baseline;
 }
 
 .gallery-img {

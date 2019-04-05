@@ -34,20 +34,23 @@
 		<div class="grid-container">
 			<?php
 				$news = glob("../data/news/*.json");
-				array_multisort(array_map('filemtime', $news), SORT_NUMERIC, SORT_ASC, $news);
-				include("../utils/phputils.php");
+				array_multisort(array_map('filemtime', $news), SORT_NUMERIC, SORT_DESC, $news);
+				include("../utils/php/phputils.php");
 				foreach($news as $article) {
 					$articleArray = json_decode(file_get_contents($article));
-					echo '<div class="body-panel">
-					<h1><a href="../news/#' . basename($article, ".json") . '">' . $articleArray[0] . '</a></h1>
-					<h3>' . $articleArray[1] . '</h3>
-					<p>' . trim_text($articleArray[2], 250) . '</p>
-					</div>';
+					if($articleArray[4] ==="yes") {
+						echo '<div class="body-panel">
+						<h1><a href="../news/#' . basename($article, ".json") . '">' . $articleArray[0] . '</a></h1>
+						<h3>' . $articleArray[1] . ' - <span class="article-date">' . $articleArray[5] . '</span></h3>
+
+						<p>' . trim_text($articleArray[2], 250) . '</p>
+						</div>';
+					}
 				}
 
 				$newsProjects = glob("../data/project/json/*.json");
-				foreach($newsProjects as $project) {
-					$project = json_decode(file_get_contents($project));
+				foreach($newsProjects as $proj) {
+					$project = json_decode(file_get_contents($proj));
 					if($project[4] === "yes") {
 						$contributors = array();
 						for($i = 0;$i < sizeof($project[3]);$i++) {
@@ -57,7 +60,7 @@
 							}
 						}
 						echo '<div class="body-panel">
-						<h1>' . $project[0] . '</h1>
+						<h1><a href="../data/project/web/' . basename($proj, ".json") . '">' . $project[0] . '</a></h1>
 						<h3>' . implode(", ", $contributors) . '</h3>
 						<p>' . trim_text($project[2], 350) . '</p>
 						</div>';

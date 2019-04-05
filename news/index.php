@@ -31,11 +31,11 @@
 				}
 			}
 
-			foreach($articles as $article) {
-				echo '<div class="title" id="' . basename($article, ".json") . '"><hr />' . $articleArray[0] . "</div>";
-				echo '<div class="author"><em>' . $articleArray[1] . '</em></div><br />';
+			for($i = 0;$i < sizeof($articles);$i++) {
+				$articleArray = json_decode(file_get_contents($articles[$i]));
+				echo '<div class="title" id="' . basename($articles[$i], ".json") . '"><hr />' . $articleArray[0] . "</div>";
+				echo '<div class="author"><em>' . $articleArray[1] . '</em> - ' . $articleArray[5] . '</div><br />';
 				echo $articleArray[2];
-				$ct++;
 			}
 		?>
 	</div>

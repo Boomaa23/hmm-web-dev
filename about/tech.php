@@ -16,9 +16,9 @@
 			$picture = '../data/staff/img/' . basename($file, ".json") . '.png';
 			if($fileArray != array("","","","") && $fileArray[3] === "tech") {
 				if($ct % 2 != 0) {
-					leftPicture($fileArray, $file, null, $picture);
+					leftPicture($fileArray, $file, null, $picture, null);
 				} else {
-					rightPicture($fileArray, $file, null, $picture);
+					rightPicture($fileArray, $file, null, $picture, null);
 				}
 				echo '<tr>
 						<td colspan="3"><hr /></td>

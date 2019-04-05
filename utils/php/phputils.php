@@ -30,8 +30,8 @@ function email($data, $subject, $target) {
 	if(isarray($target)) {
 		for($t = 0;$t < sizeof($target);$t++) {
 			if(mb_check_encoding($target[$t], 'UTF-8')) {
-				$at = strpos($target[$t], "@")
-				$dot = strpos($target[$t], "."
+				$at = strpos($target[$t], "@");
+				$dot = strpos($target[$t], ".");
 				if(!(($at && $dot) || ($at < $dot) || ($at != 0))) {
 					unset($target[$t]);
 				}
