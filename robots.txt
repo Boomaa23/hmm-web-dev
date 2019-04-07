@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /include/
+Disallow: /data/
+Disallow: /admin/
+Disallow: /images/
+Disallow: /utils/
