@@ -7,6 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="news-style.css">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 	<?php echo '<link rel="icon" href="' . file_get_contents("../utils/icon.txt") . '">'; ?>
+	<title>News | Human Mind and Migration</title>
 </head>
 
 <body>

@@ -7,6 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="../utils/css/global-headers.css">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 	<?php echo '<link rel="icon" href="' . file_get_contents("../utils/icon.txt") . '">'; ?>
+	<title>Your Story | Human Mind and Migration</title>
 </head>
 
 <body>
@@ -15,7 +16,7 @@
 	<?php include('../include/footer.html'); ?>
 	<div class="submenubar-body">
 		<span class="submenubar-header"><h1>Your Story<hr width="300px" /></h1></span>
-		<form 
+		<form
 	</div>
 </div>
 </body>

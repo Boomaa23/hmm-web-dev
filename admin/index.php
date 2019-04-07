@@ -9,8 +9,8 @@
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 	<?php echo '<link rel="icon" href="' . file_get_contents("../utils/icon.txt") . '">'; ?>
 	<title>HMM Admin Editor</title>
-
 </head>
+
 <body>
 <div class="body-container">
 	<?php include("../include/menubar.php"); ?>

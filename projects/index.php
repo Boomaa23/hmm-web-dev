@@ -7,6 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="../utils/css/display-style.css">
 	<link rel="stylesheet" type="text/css" href="project-index-style.css">
 	<?php echo '<link rel="icon" href="' . file_get_contents("../utils/icon.txt") . '">'; ?>
+	<title>Case Studies | Human Mind and Migration</title>
 </head>
 <body>
 	<?php include('../include/menubar.php');?>

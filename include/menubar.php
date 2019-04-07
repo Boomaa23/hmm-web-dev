@@ -5,7 +5,7 @@
 	<link rel="dns-prefetch" href="https://fonts.googlapis.com/">
 	<link rel="stylesheet" href='../include/menubar-style.css' type='text/css' rel='stylesheet'/>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans|Cinzel" rel="stylesheet">
-	<title>ImpactMania & UCSB | Human Mind and Migration</title>
+	<title>Human Mind and Migration | ImpactMania & UCSB</title>
 </head>
 <body>
 <div class="menubar-container">
