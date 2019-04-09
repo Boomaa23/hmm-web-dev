@@ -1,5 +1,5 @@
 <?php include "../include/auth.php"; ?>
-
+<!DOCTYPE html>
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="../utils/css/style-fixes.css">
@@ -7,13 +7,14 @@
 	<link rel="stylesheet" type="text/css" href="../utils/css/folding-style.css">
 	<link rel="stylesheet" type="text/css" href="../utils/css/global-headers.css">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-	<?php echo '<link rel="icon" href="' . file_get_contents("../utils/icon.txt") . '">'; ?>
+	<?php echo '<link rel="icon" href="' . trim(file_get_contents("../utils/icon.txt")) . '">'; ?>
 	<title>HMM Admin Editor</title>
 </head>
 
 <body>
 <div class="body-container">
-	<?php include("../include/menubar.php"); ?>
+<?php include("../include/menubar.php"); ?>
+
 	<div class="submenubar-body">
 		<span class="submenubar-header"><h1>Admin Editor<hr width="285px" /></h1></span>
 		<div class="accordion-container">
