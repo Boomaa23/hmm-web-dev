@@ -7,7 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="../utils/css/folding-style.css">
 	<link rel="stylesheet" type="text/css" href="../utils/css/global-headers.css">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-	<?php echo '<link rel="icon" href="' . trim(file_get_contents("../utils/icon.txt")) . '">'; ?>
+	<?php echo '<link rel="icon" href="' . trim(fgets(fopen("../utils/icon.txt", "r+"))) . '">'; ?>
 	<title>HMM Admin Editor</title>
 </head>
 

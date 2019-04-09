@@ -1,1 +1,2 @@
+../include/impactmania-favicon.png
 http://www.impactmania.com/im/wp-content/uploads/2018/12/impactmania-favicon-57.jpg

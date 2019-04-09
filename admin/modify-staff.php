@@ -42,11 +42,22 @@
 	}
 	echo '<input type="checkbox" name="linked[]" value="none" disabled="disabled">None<br /><br />';
 
+	$head = null; $faculty = null; $intern = null; $tech = null;
+	if($fileArray[3] === "head") {
+		$head = 'checked="checked"';
+	} else if($fileArray[3] === "faculty") {
+		$faculty = 'checked="checked"';
+	} else if($fileArray[3] === "intern") {
+		$intern = 'checked="checked"';
+	} else if($fileArray[3] === "tech") {
+		$tech = 'checked="checked"';
+	}
+
 	echo '<a>Group</a><br />
-	<input type="radio" name="group" value="head" required>Prinicpal Investigator / Project Lead</input><br />
-	<input type="radio" name="group" value="faculty">Affiliated Faculty, Organization, Program Leader</input><br />
-	<input type="radio" name="group" value="intern">Interns</input><br />
-	<input type="radio" name="group" value="tech">Techlogy Resources</input><br /><br />';
+	<input type="radio" name="group" value="head" ' . $head . ' required>Prinicpal Investigator / Project Lead</input><br />
+	<input type="radio" name="group" value="faculty" ' . $faculty . '>Affiliated Faculty, Organization, Program Leader</input><br />
+	<input type="radio" name="group" value="intern" ' . $intern . '>Interns</input><br />
+	<input type="radio" name="group" value="tech" ' . $tech . '>Techlogy Resources</input><br /><br />';
 
 	echo '<input type="submit">
 	</form><br />

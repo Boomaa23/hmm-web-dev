@@ -5,7 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="../utils/css/style-fixes.css">
 	<link rel="stylesheet" type="text/css" href="../utils/css/fadein.css">
 	<link rel="stylesheet" type="text/css" href="../utils/css/global-headers.css">
-	<?php echo '<link rel="icon" href="' . file_get_contents("../utils/icon.txt") . '">'; ?>
+	<?php echo '<link rel="icon" href="' . trim(fgets(fopen("../utils/icon.txt", "r+"))) . '">'; ?>
 	<title>Contact | Human Mind and Migration</title>
 </head>
 <body>

@@ -14,7 +14,8 @@
 .inner-studentpicture {
 	max-width:95%;
 	max-height:500px;
-	border:double grey;
+	border:2px solid grey;
+	padding:10px;
 	border-radius:5px;
 }
 

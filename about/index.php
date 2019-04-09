@@ -7,7 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="../utils/css/fadein.css">
 	<link rel="stylesheet" type="text/css" href="../utils/css/global-headers.css">
 	<link rel="stylesheet" type="text/css" href="../utils/css/folding-style.css">
-	<?php echo '<link rel="icon" href="' . file_get_contents("../utils/icon.txt") . '">'; ?>
+	<?php echo '<link rel="icon" href="' . trim(fgets(fopen("../utils/icon.txt", "r+"))) . '">'; ?>
 	<title>About Us | Human Mind and Migration</title>
 </head>
 <body>
