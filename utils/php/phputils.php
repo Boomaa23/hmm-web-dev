@@ -24,10 +24,10 @@ function removeDirectory($path) {
 }
 
 function email($data, $subject, $target) {
-	if(isarray($data)) {
+	if(is_array($data)) {
 		$data = json_encode($data);
 	}
-	if(isarray($target)) {
+	if(is_array($target)) {
 		for($t = 0;$t < sizeof($target);$t++) {
 			if(mb_check_encoding($target[$t], 'UTF-8')) {
 				$at = strpos($target[$t], "@");
