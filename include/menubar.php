@@ -10,8 +10,10 @@
 <body>
 <div class="menubar-container">
 	<div class="menubar-image-container">
-		<a href="http://www.impactmania.com/im/programs/human-mind-and-migration/" target="_blank"><img class="menubar-image" src="../include/impactmania.png" width="17.5%"></a>
-		<a href="http://www.museum.ucsb.edu/about/impactmania/projects" target="_blank"><img class="menubar-image"src="../include/ucsb.png" width="7.5%"></a>
+		<a href="http://www.impactmania.com/im/programs/human-mind-and-migration/" target="_blank">
+			<img class="menubar-image" src="../include/impactmania.png" style="width:17.5%;max-width:225px;"></a>
+		<a href="http://www.museum.ucsb.edu/about/impactmania/projects" target="_blank">
+			<img class="menubar-image"src="../include/ucsb.png" style="width:7.5%;max-width:90px;"></a>
 
 		<h1 class="menubar-text"><a href="../index/" class="menubar-text">Human Mind and Migration</a></h1>
 	</div>
